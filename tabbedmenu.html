@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tabbed Menu Bar</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        
+        function readyFn(jQuery) {
+            
+            //Style
+            $("ul").css("background-color","gray").css("padding","16px 12px 9px 12px");
+            $("li").css("display","inline").css("background-color","silver").css("padding","10").css("cursor","pointer");
+            $("div").css("padding","5px 20px 5px 20px").css("display","none");
+        
+            // Events
+            $("li").on("click",function(e){
+               setPanel(this.value);
+            });
+            
+            // Control
+            function setPanel(n){                
+                $("div").css("display","none");
+                $("li").css("background-color","silver");
+                $("#tab" + n).css("background-color","white");
+                $("#panel" + n).css("display","block");
+            }
+            
+            //Default
+            setPanel(1);
+            
+        }
+        $(document).ready(readyFn);
+    
+    </script>
+    
+</head>
+
+<body>
+    
+    <ul>
+        <li id="tab1" value="1">Learning Outcomes</li>
+        <li id="tab2" value="2">Learning Modules</li>
+        <li id="tab3" value="3">Instructor Bio</li>
+    </ul>
+    
+    <div id="panel1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sollicitudin velit justo, eget rutrum mi imperdiet non. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut turpis sapien, auctor lobortis dictum vel, imperdiet in augue. Mauris a augue vitae neque imperdiet consequat. Suspendisse quis quam aliquam nunc porta condimentum. Morbi nec odio a leo venenatis volutpat. Donec sit amet iaculis quam. Aliquam a sollicitudin magna. Duis laoreet augue sit amet purus varius convallis. Nullam cursus lacinia justo, et tristique mauris tincidunt a. Pellentesque suscipit sollicitudin tristique. Donec eleifend nisi ex, eget venenatis erat placerat non.</p>
+    </div>
+    <div id="panel2">
+        <p>Suspendisse molestie, nisl vel placerat dignissim, turpis tellus auctor urna, eu maximus dui magna eget felis. Aenean eget neque imperdiet, lobortis lorem sit amet, scelerisque nunc. Mauris hendrerit quam nec pharetra volutpat. Vivamus ullamcorper vitae dui ut pulvinar. In feugiat nibh quis dui consectetur tristique. Curabitur non dui eu magna facilisis feugiat. Morbi sit amet diam malesuada, venenatis sem et, gravida tellus. Cras mattis sit amet dolor sed pretium. Nunc mattis felis a felis gravida mollis.</p>
+    </div>
+    <div id="panel3">
+        <p>Maecenas lobortis velit non volutpat pretium. Aenean porttitor lacinia risus consequat convallis. Sed sit amet pharetra nisl, sed eleifend elit. Nulla suscipit laoreet lacus, id pretium nisi. Phasellus maximus quam nulla, in convallis justo interdum sed. Vestibulum augue turpis, vestibulum a porttitor sit amet, fringilla eu nisl. Donec facilisis, mi vitae lacinia facilisis, lectus risus pretium magna, eu tincidunt tortor mi eu nulla. Phasellus a neque enim.</p>
+    </div>
+    
+</body>
+</html>

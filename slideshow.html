@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Slideshow</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        
+        function readyFn(jQuery) {
+            
+            var arrSlides = ["bream_bay.jpg","coast.jpg","lake.jpg","lake_road.jpg","malibu_lagoon.jpg","waterandmountains.jpg"];
+            
+            arrSlides.forEach(function(v, i){
+                $("ul").append("<li><a href=" + i + " id='a" + i + "'>" + (i+1) + "</a></li>");
+            });
+            $("li").css("display","inline").css("padding-right","20px");
+            
+            $("a").on("click", function(e){
+                e.preventDefault();
+                var v = e.currentTarget.valueOf().toString();
+                v = parseInt(v.substr((v.lastIndexOf("/")+1)));
+                slideshow(v);
+            });
+            
+            function slideshow(c) {
+                window.console.log(c);
+                if (c == arrSlides.length)
+                    c = 0;
+                
+                $("div").stop();
+                $("a").css("font-weight","normal");
+                $("div").css("opacity","0");
+                $("img").attr("src","images/" + arrSlides[c]);
+                $("#a" + c).css("font-weight","bold");
+                
+                $("div").animate({opacity: "1"}, 5000, "linear", function() {    
+                    slideshow(c+1);
+                });
+            }
+            slideshow(0);
+        
+        }
+        
+        
+        
+        $(document).ready(readyFn);
+    
+    </script>
+    
+</head>
+
+<body>
+    <div><img></div>
+    <ul></ul>
+</body>
+</html>

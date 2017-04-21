@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab 2 - Calculator III</title>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+  
+    <script>
+        
+        /*1.Notice the markup that I’ve included for you in the web page. There is a text box that will display the
+        value of each button click and 16 different buttons each of which represents a major key on a basic
+        calculator. Begin by referencing the jQuery library and then immediately wire up the jQuery .ready()
+        function.*/
+        function readyFn(jQuery) {
+            
+            /*
+            2. This first part will require you to stylize all of the buttons programmatically. Using jQuery make each
+            button the same width and height, give each button a unique background color, border style, width
+            and color. Also, give the display a unique background color, set the font color and size, and set a
+            unique border style, width, and color.
+            */
+            $(":button").css("width","95px").css("height","95px");
+            $(":button").css("background-color","light-gray").css("border","1px dotted gray");
+            $("#result").css("background-color","gray").css("border","2px solid black").css("font-size","2em");
+            
+            /*
+            3. Reference the “bubble capture” code from assignment 6. Rewrite this code so that it uses jQuery
+            events and makes use of jQuery DOM manipulation techniques to set the display based on button
+            selections made.
+            */
+            $(":button").on({
+                        click: function(e) {
+                            if (this.value == "="){
+                                var c = eval($("#result").val());
+                                $("#result").val(c);
+                                
+                            }else {
+                                var v = $("#result").val() + this.value;
+                                $("#result").val(v);
+                            }
+                        }
+                        });
+        }
+        $(document).ready(readyFn);
+    
+    </script>
+    
+</head>
+
+<body>
+	<input type="text"  id="result" value="">
+    <br>
+    <div id="container">
+        <input type="button" id="seven" value="7">
+        <input type="button" id="eight" value="8">
+        <input type="button" id="nine" value="9">
+        <input type="button" id="divide" value="/">
+        <br>
+        <input type="button" id="four" value="4">
+        <input type="button" id="five" value="5">
+        <input type="button" id="six" value="6">
+        <input type="button" id="multiply" value="*">
+        <br>
+        <input type="button" id="one" value="1">
+        <input type="button" id="two" value="2">
+        <input type="button" id="three" value="3">
+        <input type="button" id="subtract" value="-">
+        <br>
+        <input type="button" id="zero" value="0">
+        <input type="button" id="period" value=".">
+        <input type="button" id="add" value="+">
+    </div>
+    <input type="button" id="equal" value="=">
+</body>
+</html>

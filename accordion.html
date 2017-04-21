@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Accordion</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        
+        function readyFn(jQuery) {
+            
+            //Style
+            $("button").css("background","RGB(33,135,120) url('images/plus.png') no-repeat left").css("padding","5px 20px 5px 20px").css("width","400px").css("color","white").css("border","none").css("border-radius","10px").css("text-align","left");
+            $("div").css("width","360px").css("padding","5px 20px 5px 20px").css("display","none").css("height","0");
+            $("p").css("font-size","12px");
+        
+            var currentPanel = "2";
+            
+            // Events
+            $("button").on("click",function(e){
+                var newPanel = this.value;
+                $("#panel" + currentPanel).animate({height: "0"}, 500, "linear", function(){
+                    $("div").css("display","none");
+                    $("button").css("background","RGB(33,135,120) url('images/plus.png') no-repeat left").css("border-radius","10px");
+                    setPanel(newPanel);
+                });    
+            });
+            
+            // Control
+            function setPanel(n){
+                currentPanel = n;
+                $("#btn" + n).css("background","RGB(139,157,51) url('images/minus.png') no-repeat left").css("border-radius","10px 10px 0px 0px");
+                $("#panel" + n).css("display","block");
+                $("#panel" + n).animate({height: "100"}, 500, "linear",function(){return false;});
+            }
+            
+            //Default
+            setPanel(currentPanel);
+            
+        }
+        $(document).ready(readyFn);
+    
+    </script>
+    
+</head>
+
+<body>
+
+    <button id="btn1" value="1">Why Pima</button><br>
+    <div id="panel1"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    
+    <button id="btn2" value="2">Apply</button><br>
+    <div id="panel2"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    <button id="btn3" value="3">Take Assessments</button><br>
+    <div id="panel3"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    <button id="btn4" value="4">New Students Orientation</button><br>
+    <div id="panel4"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    <button id="btn5" value="5">Advising</button><br>
+    <div id="panel5"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    <button id="btn6" value="6">Register for Classes</button><br>
+    <div id="panel6"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+    <button id="btn7" value="7">Student ID Card</button><br>
+    <div id="panel7"><p>Lorem ipsum dolor sit amet, penatibus ad amet donec semper non vulputate, elit vestibulum faucibus amet suspendisse, amet egestas nullam parturient curabitur morbi. Sed erat eros diam nec ultrices nec, et pellentesque ut. In sodales wisi massa nam mauris magna. Nullam minima. Id dolor, dolor consectetuer amet, massa congue dui. Lectus etiam nisl vitae.</p></div>
+    
+</body>
+</html>

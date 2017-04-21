@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 8 - Part 1</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  
+  <script>
+        
+      /* 2.Create a document ready function within an embedded script block in your web page. This is where you’ll write your code. */
+      function readyFn(jQuery) {
+      
+          /*1.	Create a button on a web page. Use the .click() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. */
+          $("#btn1").click(function(){
+              window.alert("Thank you for clicking me!");
+          })
+           
+          /*2.	Create a button on a web page. Attach the click event using the .bind() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. */
+          $("#btn2").bind("click", function(){
+              window.alert("Thank you for clicking me!");
+          })
+
+          /*3.	Create a button on a web page. Attach the click event using the .on() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. */
+          $("#btn3").on("click", function(){
+              window.alert("Thank you for clicking me!");
+          })
+          
+          /*4.	Create two buttons on a web page. Attach the click event to both buttons using a single handler using the .on() method. Again, an alert message should be displayed to the user indicating that a button has been clicked when either of the buttons are actually clicked. */
+          $("#btn4, #btn5").on("click", function(){
+              window.alert("Thank you for clicking me!");
+          })
+                  
+          /*5.	Create a div on a web page. Use jQuery to set the div element to 400px wide and 400px high. Attach the click, mouseenter, and mouseleave events using the .on() method. Display an alert message to the user indicating that the div was either clicked on, the mouse entered it, or the mouse left it. */
+          $("#div1").css("width","400px").css("height","400px").css("background-color","silver");
+          $("#div1").on({
+              click:        function (){ window.alert("Thank you for clicking me!");},
+              mouseenter:   function (){window.alert("The mouse is over it!");},
+              mouseleave:   function (){window.alert("The mouse is not over it anymore!");}
+          })
+          
+          /* 6.	Rewrite the code from number 5. This time add a span tag to the web page. Display three different messages within the span tag when the user enters the div, leaves the div, or clicks on the div.*/
+          $("#div1").on({
+              click:        function (){ $("#span1").empty().append("Thank you for clicking me!"); },
+              mouseenter:   function (){ $("#span1").empty().append("The mouse is over it!"); },
+              mouseleave:   function (){ $("#span1").empty().append("The mouse is not over it anymore!"); }
+          })
+          
+          /* 7.	Create a link within the web page and set its href attribute to browse to google.com. When the user clicks the link, first, prevent it from redirecting to that web site. Second, programmatically style the link so that its color changes to red. Third, display the name of the node that triggered the event within an alert box.*/
+          $("#link1").on({
+              click:        function (event){ 
+                                event.preventDefault(); 
+                                $("#link1").css("color","red");
+                                window.alert(event.target + " was triggered");
+                            }
+          })
+                    
+          /* 8.	Create a div tag within the web page. As the user resizes the browser, display the width and height of the browser window within the div tag. */
+          $(window).resize(function() {
+              $("#div2").text("width: " + $(window).width() + " height: " + $(window).height());
+          });
+
+          /* 9.	Create a text field using the <input> tag. When the input has focus, set the background to a light gray color. When the input does not have focus, reset the background back to a white color. */
+          $("#txt1").on({
+              focus:        function (){ $("#txt1").css("background-color","lightgray"); },
+              focusout:     function (){ $("#txt1").css("background-color","white"); }
+          })
+          
+          /*10.	Add a form tag within a web page complete with 2 input fields: one that collects name and a second that collects an email. Add a submit button. When the user submits the form, if any one of the two fields is left empty, display an alert box to the user indicating that the fields are required. Give the field that the user left empty a red border. If both fields have values in them, set their borders to green.*/
+          $("#form1").submit(function (event){
+                                event.preventDefault();
+                                if ($("#txt2").val().length == 0 || $("#txt3").val().length == 0){
+                                    window.alert("Both fields are required");
+                                    
+                                    if ($("#txt2").val().length == 0)
+                                        $("#txt2").css("border-color","red");
+                                    else
+                                        $("#txt2").css("border-color","green");
+                                        
+                                    if ($("#txt3").val().length == 0)
+                                        $("#txt3").css("border-color","red");
+                                    else
+                                        $("#txt3").css("border-color","green");
+                                } else {
+                                    $("#txt2").css("border-color","green");
+                                    $("#txt3").css("border-color","green");
+                                }    
+              
+                                    
+                }
+        )         
+      }
+       
+      $(document).ready(readyFn);
+    
+    </script>
+</head>
+
+<body>
+
+<h3>Step 1</h3>	
+<p><input id="btn1" type="button" value="Click Me"></p>
+
+<h3>Step 2</h3>	
+<p><input id="btn2" type="button" value="Click Me"></p>
+
+<h3>Step 3</h3>	
+<p><input id="btn3" type="button" value="Click Me"></p>
+
+<h3>Step 4</h3>	
+<p><input id="btn4" type="button" value="Click Me"><input id="btn5" type="button" value="Click Me"></p>
+
+<h3>Step 5</h3>		
+<div id="div1"></div>
+
+<h3>Step 6</h3>		
+<span id="span1"></span>
+
+<h3>Step 7</h3>		
+<p><a id="link1" href="http://google.com/">Google</a></p>
+
+<h3>Step 8</h3>		
+<div id="div2"></div>
+
+<h3>Step 9</h3>		
+<p><input type="text" id="txt1"></p>
+
+<h3>Step 10</h3>
+<form id="form1">
+<p><input type="text" id="txt2" placeholder="Name"></p>
+<p><input type="email" id="txt3" placeholder="Email"></p>
+<p><input type="submit" id="btn6" value="Submit"></p>
+</form>
+
+</body>
+</html>
